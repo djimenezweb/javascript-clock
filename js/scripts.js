@@ -1,5 +1,6 @@
 const digitalClockElement = document.getElementById('digital-clock');
 const dateElement = document.getElementById('date');
+const millisecondHandElement = document.getElementById('millisecond-hand');
 const secondHandElement = document.getElementById('second-hand');
 const minuteHandElement = document.getElementById('minute-hand');
 const hourHandElement = document.getElementById('hour-hand');
@@ -22,10 +23,13 @@ const updateData = () => {
   const date = new Date();
   digitalClockElement.textContent = `${date.getHours()}:${paddingTime(
     date.getMinutes()
-  )}:${paddingTime(date.getSeconds())}`;
+  )}:${paddingTime(date.getSeconds())}:${paddingTime(date.getMilliseconds())}`;
   dateElement.textContent = `${weekday.at(
     date.getDay()
   )} ${date.getDate()} ${months.at(date.getMonth())} ${date.getFullYear()}`;
+  // millisecondHandElement.style.transform = `rotate(${
+  //   date.getMilliSeconds() * 0.36
+  // }deg)`;
   secondHandElement.style.transform = `rotate(${date.getSeconds() * 6}deg)`;
   minuteHandElement.style.transform = `rotate(${date.getMinutes() * 6}deg)`;
   hourHandElement.style.transform = `rotate(${
